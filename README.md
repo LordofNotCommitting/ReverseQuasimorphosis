@@ -16,3 +16,11 @@ Like the fact that at 400-500 quasimorphosis on 60 men floor (which should be st
 
 
 Gavakh in particular kept the usual quasimorphosis gain upon usage, which I thought was fitting and it was rare enough to deserve this kind of treatment.
+
+Change Log:
+
+v1.11:
+Optimize manual endless hunt trigger logic.
+
+v1.1:
+Crash caused by prefix with experimental function. Reverted to more stable prefix - postfix conbination.
