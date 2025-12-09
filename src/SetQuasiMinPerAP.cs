@@ -26,6 +26,7 @@ namespace ReverseQuasimorphosis
         static int Passive_Effect_QGain_Cap_Min = Plugin.ConfigGeneral.ModData.GetConfigValue<int>("Passive_Effect_QGain_Cap_Min", -3);
         static int Passive_Effect_QGain_Cap_Max = Plugin.ConfigGeneral.ModData.GetConfigValue<int>("Passive_Effect_QGain_Cap_Max", 1);
 
+        static string temp_recordByLevel;
 
 
         public static bool Prefix(ref QmorphosController __instance)
@@ -56,7 +57,7 @@ namespace ReverseQuasimorphosis
                 saved_qval = __instance.QmorphosValue;
             }
 
-            QmorphosRecord recordByLevel = __instance.GetRecordByLevel(saved_qval, __instance._raidMetadata.BramfaturaId);
+            //QmorphosRecord recordByLevel = __instance.GetRecordByLevel(saved_qval, __instance._raidMetadata.BramfaturaId);
             saved_qval += num2;
             QmorphosRecord recordByLevel2 = __instance.GetRecordByLevel(saved_qval, __instance._raidMetadata.BramfaturaId);
 
@@ -64,17 +65,22 @@ namespace ReverseQuasimorphosis
             //need to re-proc... quasi behaviors, since setting it to value did not exactly  (implication unknown)
             __instance.QmorphosValue = saved_qval;
 
-            
-            // no idea what the default behavior is for invasion. but it is not global aggro I think
-            if (__instance._missions.Get(__instance._raidMetadata).ProcMissionType != ProceduralMissionType.BramfaturaInvasion) {
+            //Plugin.Logger.Log("hunt data" + temp_recordByLevel);
+            //Plugin.Logger.Log("hunt data" + recordByLevel2);
+
+            // no idea what the default behavior is for Descent. but it is not global aggro I think
+            if (__instance._missions.Get(__instance._raidMetadata).ProcMissionType != ProceduralMissionType.BramfaturaInvasion && temp_recordByLevel != recordByLevel2.ToString()) {
+                temp_recordByLevel = recordByLevel2.ToString();
                 //seeing if this fix derpy quasis
                 //make them behave as usual upon the correct conditions.
                 if (__instance.QmorphosValue >= 800)
                 {
+                    //Plugin.Logger.Log("proccing hunt");
                     __instance.SetGlobalEndlessHunt(true);
                 }
                 else
                 {
+                   // Plugin.Logger.Log("un-proccing hunt");
                     __instance.SetGlobalEndlessHunt(false);
                 }
             }
