@@ -19,6 +19,9 @@ Gavakh in particular kept the usual quasimorphosis gain upon usage, which I thou
 
 Change Log:
 
+v1.12:
+Revert endless hunt logic because quasi spawned during the +800 quasimorphosis didn't hunt for you.
+
 v1.11:
 Optimize manual endless hunt trigger logic.
 
