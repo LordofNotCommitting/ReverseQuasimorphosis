@@ -69,8 +69,8 @@ namespace ReverseQuasimorphosis
             //Plugin.Logger.Log("hunt data" + recordByLevel2);
 
             // no idea what the default behavior is for Descent. but it is not global aggro I think
-            if (__instance._missions.Get(__instance._raidMetadata).ProcMissionType != ProceduralMissionType.BramfaturaInvasion && temp_recordByLevel != recordByLevel2.ToString()) {
-                temp_recordByLevel = recordByLevel2.ToString();
+            if (__instance._missions.Get(__instance._raidMetadata).ProcMissionType != ProceduralMissionType.BramfaturaInvasion ) {
+                //temp_recordByLevel = recordByLevel2.ToString();
                 //seeing if this fix derpy quasis
                 //make them behave as usual upon the correct conditions.
                 if (__instance.QmorphosValue >= 800)
